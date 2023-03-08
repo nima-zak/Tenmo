@@ -15,6 +15,7 @@ import java.util.List;
 @PreAuthorize("isAuthenticated()")
 //"transfer" is added to BASE_API_URL
 @RequestMapping("transfer")
+@CrossOrigin(origins = "*")
 public class TransferController {
 
     TransferDao transferDao;
@@ -25,7 +26,7 @@ public class TransferController {
         this.accountDao = accountDao;
     }
 
-    @PreAuthorize("hasRole('ROLE_USER')")
+/*    @PreAuthorize("hasRole('ROLE_USER')")
     @RequestMapping (path = "/{transferId}", method = RequestMethod.GET)
     public Transfer getTransferByTransferId(@PathVariable int transferId) {
         Transfer transfer = transferDao.getTransferById(transferId);
@@ -34,9 +35,9 @@ public class TransferController {
         } else {
             return transfer;
         }
-    }
+    }*/
 
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ROLE_USER')")
     @RequestMapping (path = "/all", method = RequestMethod.GET)
     public List<Transfer> getAllTransfers() {
         List<Transfer> transfers = transferDao.seeAllTransfers();

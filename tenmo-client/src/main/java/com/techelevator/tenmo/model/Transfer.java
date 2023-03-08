@@ -1,4 +1,5 @@
 package com.techelevator.tenmo.model;
+
 import java.math.BigDecimal;
 import java.text.NumberFormat;
 

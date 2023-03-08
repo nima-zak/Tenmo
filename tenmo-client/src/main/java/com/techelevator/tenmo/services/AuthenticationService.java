@@ -52,7 +52,6 @@ public class AuthenticationService {
         headers.setContentType(MediaType.APPLICATION_JSON);
         return new HttpEntity<>(credentials, headers);
     }
-
     public boolean registerAsAdmin(UserCredentials credentials) {
         HttpEntity<UserCredentials> entity = createCredentialsEntity(credentials);
         boolean success = false;
@@ -64,4 +63,5 @@ public class AuthenticationService {
         }
         return success;
     }
+
 }

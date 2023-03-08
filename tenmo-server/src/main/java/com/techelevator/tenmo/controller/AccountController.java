@@ -1,5 +1,4 @@
 package com.techelevator.tenmo.controller;
-
 import com.techelevator.tenmo.model.Account;
 import com.techelevator.tenmo.dao.AccountDao;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -11,6 +10,7 @@ import java.math.BigDecimal;
 @PreAuthorize("isAuthenticated()")
 //"transfer" is added to BASE_API_URL
 @RequestMapping("account")
+@CrossOrigin(origins = "*")
 public class AccountController {
 
     private final AccountDao accountDao;

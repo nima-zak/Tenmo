@@ -13,6 +13,7 @@ import java.util.List;
 @PreAuthorize("isAuthenticated()")
 //"user" is added to BASE_API_URL
 @RequestMapping("user")
+@CrossOrigin(origins = "*")
 public class UserController {
 
     UserDao userDao;

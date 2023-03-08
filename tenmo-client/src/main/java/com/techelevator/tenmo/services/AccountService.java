@@ -1,5 +1,4 @@
 package com.techelevator.tenmo.services;
-
 import com.techelevator.tenmo.App;
 import com.techelevator.tenmo.model.Account;
 import com.techelevator.tenmo.model.AuthenticatedUser;
@@ -46,6 +45,7 @@ public class AccountService {
         }
         return account;
     }
+
 
     public HttpEntity<Void> makeAuthEntity() {
         HttpHeaders headers = new HttpHeaders();

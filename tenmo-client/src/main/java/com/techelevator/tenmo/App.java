@@ -9,13 +9,13 @@ import com.techelevator.tenmo.services.*;
 import java.util.Objects;
 
 public class App {
-//These constant strings define the base URLs for the API endpoints related
+    //These constant strings define the base URLs for the API endpoints related
 // to accounts, users, and transfers, using the URL of the locally running web server.
     private static final String API_BASE_URL = "http://localhost:8080/";
     private static final String API_ACCOUNT_BASE_URL = API_BASE_URL + "account";
     private static final String API_USER_BASE_URL = API_BASE_URL + "user";
     private static final String API_TRANSFER_BASE_URL = API_BASE_URL + "transfer";
-//   These lines of code create instances of various service classes
+    //   These lines of code create instances of various service classes
 //   and an instance of the authenticated user to access the API,
 //   allowing the user to interact
 //   with the different endpoints and services provided by the Tenmo API
@@ -112,39 +112,41 @@ public class App {
         }
     }
 
-	private void viewCurrentBalance() {
-		// TODO Auto-generated method stub
+    private void viewCurrentBalance() {
+        // TODO Auto-generated method stub
         accountService.getBalance(currentUser);
-	}
+    }
 
-	private void viewTransferHistory() {
-		// TODO Auto-generated method stub
+    private void viewTransferHistory() {
+        // TODO Auto-generated method stub
         Transfer[] transfers = transferService.findAllTransfersForCurrentUser(currentUser);
         transferService.printTransfers(transfers);
-	}
+    }
 
-	private void viewPendingRequests() {
-		// TODO Auto-generated method stub
-        Transfer[] pendingTransfersList = transferService.getPendingRequests();
+    private void viewPendingRequests() {
+        // TODO Auto-generated method stub
+        Transfer[] pendingTransfersList = transferService.getPendingRequests(currentUser);
         transferService.printTransfers(pendingTransfersList);
         if (pendingTransfersList.length != 0) {
             int userSelection = consoleService.promptForInt("Enter the transfer ID for the transfer you would like to approve or reject (or 0 to cancel): ");
-            transferService.updatePendingTransferStatus(pendingTransfersList, userSelection);
+            transferService.updatePendingTransferStatus(pendingTransfersList, userSelection, currentUser);
         }
-	}
+    }
 
-	private void sendBucks() {
-		// TODO Auto-generated method stub
+    private void sendBucks() {
+        // TODO Auto-generated method stub
         userService.listAllUsers(currentUser);
-        transferService.sendBucks();
-	}
+        transferService.sendBucks(currentUser);
 
-	private void requestBucks() {
-		// TODO Auto-generated method stub
+
+    }
+
+    private void requestBucks() {
+        // TODO Auto-generated method stub
         userService.listAllUsers(currentUser);
-        transferService.requestBucks();
-		
-	}
+        transferService.requestBucks(currentUser);
+
+    }
     private void viewTransferByTransferId() {
         Transfer transfer = transferService.findTransferByTransferId();
         int userId = currentUser.getUser().getId();
@@ -161,3 +163,4 @@ public class App {
     }
 
 }
+

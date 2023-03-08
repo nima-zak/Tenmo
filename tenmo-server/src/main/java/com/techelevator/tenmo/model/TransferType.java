@@ -2,19 +2,31 @@ package com.techelevator.tenmo.model;
 
 public class TransferType {
 
-    private int transferTypeId;
-    private String transferType;
+    private int typeId;
+    private String typeDesc; //description
 
-    public int getTransferTypeId() {
-        return transferTypeId;
+    public TransferType(int typeId, String typeDesc) {
+        this.typeId = typeId;
+        this.typeDesc = typeDesc;
     }
-    public void setTransferTypeId(int transferTypeId) {
-        this.transferTypeId = transferTypeId;
+
+    public TransferType() {
+
     }
-    public String getTransferType() {
-        return transferType;
+
+    public int getTypeId() {
+        return typeId;
     }
-    public void setTransferType(String transferType) {
-        this.transferType = transferType;
+
+    public void setTypeId(int typeId) {
+        this.typeId = typeId;
+    }
+
+    public String getTransferTypeDesc() {
+        return typeDesc;
+    }
+
+    public void setTransferTypeDesc(String transferTypeDesc) {
+        this.typeDesc = transferTypeDesc;
     }
 }
